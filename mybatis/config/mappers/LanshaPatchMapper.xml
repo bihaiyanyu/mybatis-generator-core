@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="test.dao.LanshaPatchMapper" >
+    <resultMap id="BaseResultMap" type="test.entity.LanshaPatch" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="app_type" property="appType" jdbcType="TINYINT" />
+        <result column="ostype" property="ostype" jdbcType="TINYINT" />
+        <result column="version" property="version" jdbcType="VARCHAR" />
+        <result column="patchversion" property="patchversion" jdbcType="INTEGER" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="size" property="size" jdbcType="INTEGER" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="creater" property="creater" jdbcType="VARCHAR" />
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, app_type, ostype, version, patchversion, address, size, remark, creater, create_date
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from lansha_patch
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from lansha_patch
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="test.entity.LanshaPatch" >
+        insert into lansha_patch (id, app_type, ostype, 
+            version, patchversion, address, 
+            size, remark, creater, 
+            create_date)
+        values (#{id,jdbcType=INTEGER}, #{appType,jdbcType=TINYINT}, #{ostype,jdbcType=TINYINT}, 
+            #{version,jdbcType=VARCHAR}, #{patchversion,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+            #{size,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, 
+            #{createDate,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="test.entity.LanshaPatch" >
+        insert into lansha_patch
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="appType != null" >
+                app_type,
+            </if>
+            <if test="ostype != null" >
+                ostype,
+            </if>
+            <if test="version != null" >
+                version,
+            </if>
+            <if test="patchversion != null" >
+                patchversion,
+            </if>
+            <if test="address != null" >
+                address,
+            </if>
+            <if test="size != null" >
+                size,
+            </if>
+            <if test="remark != null" >
+                remark,
+            </if>
+            <if test="creater != null" >
+                creater,
+            </if>
+            <if test="createDate != null" >
+                create_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="appType != null" >
+                #{appType,jdbcType=TINYINT},
+            </if>
+            <if test="ostype != null" >
+                #{ostype,jdbcType=TINYINT},
+            </if>
+            <if test="version != null" >
+                #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="patchversion != null" >
+                #{patchversion,jdbcType=INTEGER},
+            </if>
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="size != null" >
+                #{size,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null" >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="creater != null" >
+                #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="test.entity.LanshaPatch" >
+        update lansha_patch
+        <set >
+            <if test="appType != null" >
+                app_type = #{appType,jdbcType=TINYINT},
+            </if>
+            <if test="ostype != null" >
+                ostype = #{ostype,jdbcType=TINYINT},
+            </if>
+            <if test="version != null" >
+                version = #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="patchversion != null" >
+                patchversion = #{patchversion,jdbcType=INTEGER},
+            </if>
+            <if test="address != null" >
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="size != null" >
+                size = #{size,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null" >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="creater != null" >
+                creater = #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="test.entity.LanshaPatch" >
+        update lansha_patch
+        set app_type = #{appType,jdbcType=TINYINT},
+            ostype = #{ostype,jdbcType=TINYINT},
+            version = #{version,jdbcType=VARCHAR},
+            patchversion = #{patchversion,jdbcType=INTEGER},
+            address = #{address,jdbcType=VARCHAR},
+            size = #{size,jdbcType=INTEGER},
+            remark = #{remark,jdbcType=VARCHAR},
+            creater = #{creater,jdbcType=VARCHAR},
+            create_date = #{createDate,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
